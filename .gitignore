@@ -137,3 +137,7 @@ artifacts/proprocessor.pkl
 
 # CatBoost
 catboost_info/
+
+# Notebooks (large files)
+notebook/
+*.ipynb
