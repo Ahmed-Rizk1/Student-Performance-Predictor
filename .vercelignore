@@ -1,0 +1,45 @@
+# MLflow artifacts (too large for serverless)
+mlruns/
+mlflow.db
+
+# Notebooks and data
+notebook/
+*.ipynb
+
+# Development files
+__pycache__/
+*.pyc
+.git/
+.gitignore
+tests/
+*.md
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Large model files (use alternative storage for production)
+# artifacts/model.pkl
+# artifacts/preprocessor.pkl
+
+# Old artifacts
+artifacts/proprocessor.pkl
+
+# Docker (not needed for Vercel)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Other
+.env
+*.zip
+catboost_info/

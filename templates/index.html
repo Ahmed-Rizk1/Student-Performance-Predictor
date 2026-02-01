@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered student performance prediction using machine learning. Predict math scores based on various factors.">
+    <title>Student Performance Predictor | AI-Powered Academic Insights</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animated">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="logo">
+                <span class="logo-icon">📊</span>
+                <span>EduPredict</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/predictdata">Predict</a></li>
+                <li><a href="https://github.com/Ahmed-Rizk1/mlproject" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                <span>Powered by Machine Learning</span>
+            </div>
+            
+            <h1>
+                Predict Student<br>
+                <span class="gradient-text">Academic Performance</span>
+            </h1>
+            
+            <p>
+                Leverage advanced ML algorithms to predict student math scores based on 
+                demographic factors, preparation habits, and academic indicators.
+            </p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.6s ease 0.3s both;">
+                <a href="/predictdata" class="btn btn-primary btn-lg">
+                    🎯 Get Prediction
+                </a>
+                <a href="https://github.com/Ahmed-Rizk1/mlproject" class="btn btn-secondary btn-lg" target="_blank">
+                    ⭐ View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>7 ML Models</h3>
+                    <p>Compares Random Forest, XGBoost, CatBoost, and more to find the best performer.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>95% Accuracy</h3>
+                    <p>Hyperparameter tuning with GridSearchCV ensures optimal model performance.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Prediction</h3>
+                    <p>Get instant predictions through our Flask-powered web interface.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>MLOps Ready</h3>
+                    <p>Integrated with MLflow for experiment tracking and model versioning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Built with ❤️ by <a href="https://github.com/Ahmed-Rizk1" target="_blank">Ahmed Rizk</a> | End-to-End ML Project</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

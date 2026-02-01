@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Predict student math scores using machine learning. Enter student data and get instant predictions.">
+    <title>Predict Score | Student Performance Predictor</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animated">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="logo">
+                <span class="logo-icon">📊</span>
+                <span>EduPredict</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/predictdata">Predict</a></li>
+                <li><a href="https://github.com/Ahmed-Rizk1/mlproject" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container glass-card">
+                <div class="form-header">
+                    <h1>🎓 Predict Math Score</h1>
+                    <p>Enter student information to get a predicted math score</p>
+                </div>
+
+                <form action="{{ url_for('predict_datapoint') }}" method="post" id="prediction-form">
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label class="form-label">👤 Gender</label>
+                        <select class="form-control" name="gender" required>
+                            <option value="" disabled selected>Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Ethnicity -->
+                    <div class="form-group">
+                        <label class="form-label">🌍 Race / Ethnicity</label>
+                        <select class="form-control" name="ethnicity" required>
+                            <option value="" disabled selected>Select ethnicity group</option>
+                            <option value="group A">Group A</option>
+                            <option value="group B">Group B</option>
+                            <option value="group C">Group C</option>
+                            <option value="group D">Group D</option>
+                            <option value="group E">Group E</option>
+                        </select>
+                    </div>
+
+                    <!-- Parental Education -->
+                    <div class="form-group">
+                        <label class="form-label">🎓 Parental Level of Education</label>
+                        <select class="form-control" name="parental_level_of_education" required>
+                            <option value="" disabled selected>Select education level</option>
+                            <option value="some high school">Some High School</option>
+                            <option value="high school">High School</option>
+                            <option value="some college">Some College</option>
+                            <option value="associate's degree">Associate's Degree</option>
+                            <option value="bachelor's degree">Bachelor's Degree</option>
+                            <option value="master's degree">Master's Degree</option>
+                        </select>
+                    </div>
+
+                    <!-- Lunch -->
+                    <div class="form-group">
+                        <label class="form-label">🍽️ Lunch Type</label>
+                        <select class="form-control" name="lunch" required>
+                            <option value="" disabled selected>Select lunch type</option>
+                            <option value="standard">Standard</option>
+                            <option value="free/reduced">Free / Reduced</option>
+                        </select>
+                    </div>
+
+                    <!-- Test Prep -->
+                    <div class="form-group">
+                        <label class="form-label">📚 Test Preparation Course</label>
+                        <select class="form-control" name="test_preparation_course" required>
+                            <option value="" disabled selected>Select test prep status</option>
+                            <option value="none">None</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <!-- Scores -->
+                    <div class="score-group">
+                        <div class="form-group">
+                            <label class="form-label">✍️ Writing Score</label>
+                            <div class="score-input-wrapper">
+                                <input type="number" class="form-control" name="writing_score" 
+                                       placeholder="0 - 100" min="0" max="100" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">📖 Reading Score</label>
+                            <div class="score-input-wrapper">
+                                <input type="number" class="form-control" name="reading_score" 
+                                       placeholder="0 - 100" min="0" max="100" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        🎯 Predict Math Score
+                    </button>
+                </form>
+
+                <!-- Result Display -->
+                {% if results is defined and results %}
+                <div class="result-container">
+                    <div class="result-label">Predicted Math Score</div>
+                    <div class="result-value">{{ results | round(1) }}</div>
+                    <div class="result-description">
+                        {% if results >= 80 %}
+                        🌟 Excellent! The student is predicted to perform very well.
+                        {% elif results >= 60 %}
+                        👍 Good performance predicted. Room for improvement.
+                        {% elif results >= 40 %}
+                        📚 Average performance. Consider additional support.
+                        {% else %}
+                        ⚠️ Below average. Strong intervention recommended.
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Built with ❤️ by <a href="https://github.com/Ahmed-Rizk1" target="_blank">Ahmed Rizk</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv
+venv
+env
+*.egg-info
+.eggs
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints
+notebook/
+
+# ML artifacts that shouldn't be in container
+catboost_info/
+mlruns/
+
+# Documentation
+*.md
+!README.md
+
+# Tests (optional - include if you want tests in container)
+# tests/
+
+# Misc
+.DS_Store
+Thumbs.db
+*.log
